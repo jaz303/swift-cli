@@ -2,6 +2,12 @@ TOOLCHAIN 	:= /Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeD
 SWIFT 		:= $(TOOLCHAIN)/bin/swift
 
 SRC 		:= $(shell find . -name '*.swift')
+TARGET		:= a.out
 
-a.out: $(SRC)
+.PHONY: clean
+
+clean:
+	rm -f $(TARGET)
+
+$(TARGET): $(SRC)
 	$(SWIFT) -o $@ $<
